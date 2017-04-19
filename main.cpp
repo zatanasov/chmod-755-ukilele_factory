@@ -23,8 +23,12 @@ int main()
     cout << "Ukulele ID: " << ukulele.getUkulele_ID() << ";" << endl;
     cout << "Price: " << ukulele.getPrice() << ";" << endl;
     cout << "Type: " << ukulele.getUkuleleType().getName() << ";" << endl;
+    //cout << "Body material " << ukulele.getUkuleleBody().getMaterial() << ";" << endl;
+    //cout << "Frets material " << ukulele.getFretboard().getFrets().getMaterial() << ";" << endl;
     cout << "Tuning head ID " << ukulele.getTuningHead().getHead_ID() << ";" << endl;
-    
+    //cout << "String material: " << ukulele.getString().getMaterial() << ";" << endl;
+    //cout << "Bridge material " << ukulele.getBridge().getMaterial() << ";" << endl;
+    //cout << "Saddle material: " << ukulele.getSaddle().getMaterial() << endl;
 
     return 0;
 }

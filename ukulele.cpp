@@ -524,3 +524,242 @@ Saddle Ukulele::getSaddle(){
     return saddle;
 }
 
+//implementing Supplier class
+Supplier::Supplier(){
+    supplier_ID = 0;
+    supplier_name = "";
+    supplied_material = 0;
+}
+
+Supplier::Supplier(int supplier_ID, string supplier_name, Material supplied_material){
+    this->supplier_ID = supplier_ID;
+    this->supplier_name = supplier_name;
+    this->supplied_material = supplied_material;
+}
+
+int Supplier::getSupplier_ID(){
+    return supplier_ID;
+}
+
+string Supplier::getSupplier_name(){
+    return supplier_name;
+}
+
+Material Supplier::getSupplied_Material(){
+    return material;
+}
+
+Supplier& Supplier::operator =(const Supplier& S){
+    this->supplier_ID = S.supplier_ID;
+    this->supplier_name = S.supplier_name;
+    this->supplied_material = S.supplied_material;
+
+    return *this;
+}
+
+Supplier& Supplier::operator =(const int& arg){
+    this->supplier_ID = arg;
+    this->supplier_namen = "";
+    this->supplied_material = 0;
+
+    return *this;
+}
+
+//implementing Manager class
+Manager::Manager(){
+    manager_ID = 0;
+    name = "";
+    salary = 0;
+}
+
+Manager::Manager(int manager_ID, string name, float salary){
+    this->manager_ID = manager_ID;
+    this->name = name;
+    this->salary = salary;
+}
+
+int Manager::getManager_ID(){
+    return manager_ID;
+}
+
+string Manager::getName(){
+    return name;
+}
+
+float Manager::getSalary(){
+    return salary;
+}
+
+Manager& Manager::operator =(const Manager& M){
+
+    this->manager_ID = M.manager_ID;
+    this->name = M.name;
+    this->salary = M.salary;
+
+    return *this;
+}
+
+Manager& Manager::operator =(const int& arg){
+
+    this->manager_ID = arg;
+    this->name = "";
+    this->salary = 0;
+
+    return *this;
+}
+
+//implementing Employee class
+Employee::Employee(){
+    employee_ID = 0;
+    name = "";
+    salary = 0;
+    qualification = "";
+}
+
+Employee::Employee(int employee_ID, string name, float salary, string qualification){
+    this->employee_ID = employee_ID;
+    this->name = name;
+    this->salary = salary;
+    this->qualification = qualification;
+}
+
+int Employee::getManager_ID(){
+    return employee_ID;
+}
+
+string Employee::getName(){
+    return name;
+}
+
+float Employee::getSalary(){
+    return salary;
+}
+
+string Employee::getQualification(){
+    return qualification;
+}
+
+Employee& Employee::operator =(const Employee& M){
+
+    this->employee_ID = M.employee_ID;
+    this->name = M.name;
+    this->salary = M.salary;
+    this->qualification = M.qualification;
+
+    return *this;
+}
+
+Employee& Employee::operator =(const int& arg){
+
+    this->employee_ID = arg;
+    this->name = "";
+    this->salary = 0;
+    this->qualification = "";
+
+    return *this;
+}
+
+//implementing Productionfactory class
+ProductionFactory::ProductionFactory(){
+    factory_ID = 0;
+    address = "";
+    contacts = "";
+    manager = 0;
+}
+
+ProductionFactory::ProductionFactory(int factory_ID, string address, string contacts, Manager manager){
+    this->factory_ID = factory_ID;
+    this->address = address;
+    this->contacts = contacts;
+    this->manager = manager;
+}
+
+int ProductionFactory::getFactory_ID(){
+    return factory_ID;
+}
+
+string ProductionFactory::getAddress(){
+    return address;
+}
+
+string ProductionFactory::getContacts(){
+    return contacts;
+}
+
+Manager ProductionFactory::getManager(){
+    return manager;
+}
+
+ProductionFactory& ProductionFactory::operator =(const ProductionFactory& P){
+    this->factory_ID = P.factory_ID;
+    this->address = P.address;
+    this->contacts = P.contacts;
+    this->manager = P.manager;
+}
+
+ProductionFactory& ProductionFactory::operator =(const int& arg){
+    this->factory_ID = arg;
+    this->address = "";
+    this->contacts = "";
+    this->manager = 0;
+}
+
+//implementation of Woodfactory class
+void WoodFactory::setManager(Manager M){
+    this->wood_factory_manager = M;
+}
+
+Manager WoodFactory::getManager(){
+    return manager;
+}
+
+void WoodFactory::ukuleleBodyProduction(Employee employee, UkuleleBody body){
+    this->employee = employee;
+    this->body = body;
+}
+
+void WoodFactory::fretboardProduction(Employee employee, Fretboard fretboard){
+    this->employee = employee;
+    this->fretboard = fretboard;
+}
+
+void WoodFactory::bridgeProduction(Employee employee, Bridge bridge){
+    this->employee = employee;
+    this->bridge = bridge;
+}
+
+void WoodFactory::saddleProduction(Employee employee, Saddle saddle){
+    this->employee = employee;
+    this->saddle = saddle;
+}
+
+//implementation of Metalfactory class
+void MetalFactory::setManager(Manager M){
+    this->metal_factory_manager = M;
+}
+
+Manager MetalFactory::getManager(){
+    return manager;
+}
+
+void MetalFactory::ukuleleStringProduction(Employee employee, UkuleleString str){
+    this->employee = employee;
+    this->str = str;
+}
+
+void MetalFactory::tuningHeadProduction(Employee employee, TuningHead head){
+    this->employee = employee;
+    this->head = head;
+}
+
+void WoodFactory::bridgeProduction(Employee employee, Bridge bridge){
+    this->employee = employee;
+    this->bridge = bridge;
+}
+
+void WoodFactory::saddleProduction(Employee employee, Saddle saddle){
+    this->employee = employee;
+    this->saddle = saddle;
+}
+
+

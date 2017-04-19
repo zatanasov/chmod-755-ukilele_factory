@@ -244,6 +244,147 @@ public:
     Saddle getSaddle();
 };
 
+//declaring supplier class
+class  Supplier{
+
+private:
+
+    int supplier_ID;
+    string supplier_name;
+    Material supplied_material;
+
+public:
+
+    Supplier();
+    Supplier(int, string, Material);
+
+    int getSupplier_ID();
+    string getSupplier_name();
+    Material getSupplied_Material();
+
+    Supplier& operator =(const Supplier&);
+    Supplier& operator =(const int&);
+};
+
+class Manager{
+
+private:
+
+    int manager_ID;
+    string name;
+    float salary;
+
+public:
+
+    Manager();
+    Manager(int, string, float);
+    int getManager_ID();
+    string getName();
+    float getSalary();
+
+    Manager& operator =(const Manager&);
+    Manager& operator =(const int&);
+};
+
+class Employee{
+
+private:
+
+    int employee_ID;
+    string name;
+    float salary;
+    string qualification;
+
+public:
+
+    Employee();
+    Employee(int, string, float, string);
+    int getEmployee_ID();
+    string getName();
+    float getSalary();
+    string getQualification();
+
+    Employee& operator =(const Employee&);
+    Employee& operator =(const int&);
+};
+
+//declaring production class
+class ProductionFactory {
+
+private:
+
+    int factory_ID;
+    string address;
+    string contacts;
+    Manager manager;
+
+public:
+
+   ProductionFactory();
+   ProductionFactory(int, string, string, Manager);
+   int getFactory_ID();
+   string getAddress();
+   string getContacts();
+   Manager getManager();
+
+   ProductionFactory& operator =(const ProductionFactory&);
+   ProductionFactory& operator =(const int&);
+};
+
+class WoodFactory: public ProductionFactory{
+
+private:
+    Manager wood_factory_manager;
+    Employee employee;
+    UkuleleBody body;
+    Fretboard fretboard;
+    Bridge bridge;
+    Saddle saddle;
+
+public:
+
+    void setManager(Manager);
+
+    Manager getManager();
+
+    void ukuleleBodyProduction(Employee, UkuleleBody);//every employee is responsible for the production of a single part
+
+    void fretboardProduction(Employee, Fretboard);
+
+    void bridgeProduction(Employee, Bridge);
+
+    void saddleProduction(Employee, Saddle);
+};
+
+class MetalFactory: public ProductionFactory{
+
+private:
+    Manager metal_factory_manager;
+    Employee employee;
+    TuningHead head;
+    UkuleleString str;
+    Bridge bridge;
+    Saddle saddle;
+
+public:
+
+    void setManager(Manager);
+
+    Manager getManager();
+
+    void tuningHeadProduction(Employee, TuningHead); //every employee is responsible for the production of a single part
+
+    void ukuleleStringProduction(Employee, UkuleleString);
+
+    void bridgeProduction(Employee, Bridge);//the saddle and the bridge can be made either of wood or of metal
+
+    void saddleProduction(Employee, Saddle);
+};
+
+
+
+
+
 
 
 
