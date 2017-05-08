@@ -242,6 +242,9 @@ public:
     UkuleleString getString();
     Bridge getBridge();
     Saddle getSaddle();
+
+    Ukulele& operator =(const Ukulele&);
+    Ukulele& operator =(const int&);
 };
 
 //declaring supplier class
@@ -354,6 +357,9 @@ public:
     void bridgeProduction(Employee, Bridge);
 
     void saddleProduction(Employee, Saddle);
+
+    WoodFactory& operator =(const WoodFactory&);
+    WoodFactory& operator =(const int&);
 };
 
 class MetalFactory: public ProductionFactory{
@@ -379,6 +385,33 @@ public:
     void bridgeProduction(Employee, Bridge);//the saddle and the bridge can be made either of wood or of metal
 
     void saddleProduction(Employee, Saddle);
+
+    MetalFactory& operator =(const MetalFactory&);
+    MetalFactory& operator =(const int&);
+};
+
+class ManagementCockpit {
+
+private:
+    Supplier supplier1, supplier2;
+    Ukulele ukulele;
+    MetalFactory metal_f;
+    WoodFactory wood_f;
+
+public:
+
+    ManagementCockpit();
+
+    void ukulele_request(Supplier, Supplier, Ukulele, MetalFactory, WoodFactory);
+
+    Supplier getSupplier1();
+    Supplier getSupplier2();
+    Ukulele getUkulele();
+    MetalFactory getMetalFactory();
+    WoodFactory getWoodFactory();
+
+    void print_output();
+
 };
 
 

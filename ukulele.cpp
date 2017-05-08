@@ -1,10 +1,9 @@
-#ifndef _XXX_
-#define _XXX_
+
 #include <iostream>
+#include <list>
 #include <string>
 using namespace std;
 #include "ukulele.h"
-#endif
 
 
 //implementing Material constructors
@@ -524,6 +523,34 @@ Saddle Ukulele::getSaddle(){
     return saddle;
 }
 
+Ukulele& Ukulele::operator =(const Ukulele& U){
+    this->body = U.body;
+    this->bridge = U.bridge;
+    this->fretboard = U.fretboard;
+    this->price = U.price;
+    this->saddle = U.saddle;
+    this->tuning_head = U.tuning_head;
+    this->type = U.type;
+    this->ukulele_ID = U.ukulele_ID;
+    this->ukulele_string = U.ukulele_string;
+
+    return *this;
+}
+
+Ukulele& Ukulele::operator =(const int& arg){
+    this->body = 0;
+    this->bridge = 0 ;
+    this->fretboard = 0;
+    this->price = arg;
+    this->saddle = 0;
+    this->tuning_head = 0;
+    this->type = 0;
+    this->ukulele_ID = 0;
+    this->ukulele_string = 0;
+
+    return *this;
+}
+
 //implementing Supplier class
 Supplier::Supplier(){
     supplier_ID = 0;
@@ -546,7 +573,7 @@ string Supplier::getSupplier_name(){
 }
 
 Material Supplier::getSupplied_Material(){
-    return material;
+    return supplied_material;
 }
 
 Supplier& Supplier::operator =(const Supplier& S){
@@ -559,7 +586,7 @@ Supplier& Supplier::operator =(const Supplier& S){
 
 Supplier& Supplier::operator =(const int& arg){
     this->supplier_ID = arg;
-    this->supplier_namen = "";
+    this->supplier_name = "";
     this->supplied_material = 0;
 
     return *this;
@@ -623,7 +650,7 @@ Employee::Employee(int employee_ID, string name, float salary, string qualificat
     this->qualification = qualification;
 }
 
-int Employee::getManager_ID(){
+int Employee::getEmployee_ID(){
     return employee_ID;
 }
 
@@ -695,6 +722,8 @@ ProductionFactory& ProductionFactory::operator =(const ProductionFactory& P){
     this->address = P.address;
     this->contacts = P.contacts;
     this->manager = P.manager;
+
+    return *this;
 }
 
 ProductionFactory& ProductionFactory::operator =(const int& arg){
@@ -702,6 +731,8 @@ ProductionFactory& ProductionFactory::operator =(const int& arg){
     this->address = "";
     this->contacts = "";
     this->manager = 0;
+
+    return *this;
 }
 
 //implementation of Woodfactory class
@@ -710,7 +741,7 @@ void WoodFactory::setManager(Manager M){
 }
 
 Manager WoodFactory::getManager(){
-    return manager;
+    return wood_factory_manager;
 }
 
 void WoodFactory::ukuleleBodyProduction(Employee employee, UkuleleBody body){
@@ -733,13 +764,35 @@ void WoodFactory::saddleProduction(Employee employee, Saddle saddle){
     this->saddle = saddle;
 }
 
+WoodFactory& WoodFactory::operator =(const WoodFactory& P){
+    this->body = P.body;
+    this->bridge = P.bridge;
+    this->employee = P.employee;
+    this->fretboard = P.fretboard;
+    this->saddle = P.saddle;
+    this->wood_factory_manager = P.wood_factory_manager;
+
+    return *this;
+}
+
+WoodFactory& WoodFactory::operator =(const int& arg){
+    this->body = 0;
+    this->bridge = 0;
+    this->employee = 0;
+    this->fretboard = arg;
+    this->saddle = 0;
+    this->wood_factory_manager = 0;
+
+    return *this;
+}
+
 //implementation of Metalfactory class
 void MetalFactory::setManager(Manager M){
     this->metal_factory_manager = M;
 }
 
 Manager MetalFactory::getManager(){
-    return manager;
+    return metal_factory_manager;
 }
 
 void MetalFactory::ukuleleStringProduction(Employee employee, UkuleleString str){
@@ -752,14 +805,87 @@ void MetalFactory::tuningHeadProduction(Employee employee, TuningHead head){
     this->head = head;
 }
 
-void WoodFactory::bridgeProduction(Employee employee, Bridge bridge){
+void MetalFactory::bridgeProduction(Employee employee, Bridge bridge){
     this->employee = employee;
     this->bridge = bridge;
 }
 
-void WoodFactory::saddleProduction(Employee employee, Saddle saddle){
+void MetalFactory::saddleProduction(Employee employee, Saddle saddle){
     this->employee = employee;
     this->saddle = saddle;
 }
+
+MetalFactory& MetalFactory::operator =(const MetalFactory& P){
+    this->head = P.head;
+    this->bridge = P.bridge;
+    this->employee = P.employee;
+    this->str = P.str;
+    this->saddle = P.saddle;
+    this->metal_factory_manager = P.metal_factory_manager;
+
+    return *this;
+}
+
+MetalFactory& MetalFactory::operator =(const int& arg){
+    this->head = arg;
+    this->bridge = arg;
+    this->employee = arg;
+    this->str = arg;
+    this->saddle = arg;
+    this->metal_factory_manager = arg;
+
+    return *this;
+}
+
+ManagementCockpit::ManagementCockpit(){
+    this->supplier1 = 0;
+    this->supplier2 = 0;
+    this->ukulele = 0;
+    this->metal_f = 0;
+    this->wood_f = 0;
+}
+
+void ManagementCockpit::ukulele_request(Supplier supplier1, Supplier supplier2, Ukulele ukulele , MetalFactory metal_f, WoodFactory wood_f){
+
+    this->supplier1 = supplier1;
+    this->supplier2 = supplier2;
+    this->ukulele = ukulele;
+    this->metal_f = metal_f;
+    this->wood_f = wood_f;
+}
+
+Supplier ManagementCockpit::getSupplier1(){
+    return supplier1;
+}
+
+Supplier ManagementCockpit::getSupplier2(){
+    return supplier2;
+}
+
+Ukulele ManagementCockpit::getUkulele(){
+    return ukulele;
+}
+
+MetalFactory ManagementCockpit::getMetalFactory(){
+    return metal_f;
+}
+
+WoodFactory ManagementCockpit::getWoodFactory(){
+    return wood_f;
+}
+
+void ManagementCockpit::print_output(){
+    cout <<"Supplier1: " << supplier1.getSupplier_name()  << "(name), " << supplier1.getSupplier_ID() << "(ID)" << endl;
+    cout << "supplies " << supplier1.getSupplied_Material().getName() << "to"<< endl;
+    cout << "metal factory with ID: " << metal_f.getFactory_ID()<< endl;
+
+    cout <<"Supplier2: " << supplier2.getSupplier_name()  << "(name), " << supplier2.getSupplier_ID() << "(ID)" << endl;
+    cout << "supplies " << supplier2.getSupplied_Material().getName() << "to"<< endl;
+    cout << "metal factory with ID: " << wood_f.getFactory_ID()<< endl;
+}
+
+
+
+
 
 
